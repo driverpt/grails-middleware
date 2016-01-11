@@ -1,0 +1,2 @@
+grails.compiler.traits.TraitInjector=grails.compiler.traits.MiddlewareTraitInjector
+grails.core.ArtefactHandler=org.grails.plugins.web.middleware.MiddlewareArtefactHandler

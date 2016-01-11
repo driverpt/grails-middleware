@@ -1,0 +1,3 @@
+<plugin name='interceptors'>
+    <type>org.grails.plugins.web.middleware.MiddlewareArtefactHandler</type>
+</plugin>
