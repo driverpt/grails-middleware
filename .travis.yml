@@ -1,0 +1,17 @@
+language: groovy
+sudo: false
+cache:
+  directories:
+  - "$HOME/.gradle/caches"
+  - "$HOME/.gradle/wrapper"
+before_cache:
+  - rm -f $HOME/.gradle/caches/modules-2/modules-2.lock
+jdk:
+  - oraclejdk8
+install: true
+script: "./travis-build.sh"
+env:
+  global:
+  - GIT_NAME="Luis Duarte"
+  - GIT_EMAIL="luis.duarte@luisduarte.net"
+  - secure: "NhBowVnnK5IKEzeh/8qVM2Rv2SslkJ10M6vQIJgLTWg4uQUjEuTncMsUvzTkaw5fepIO8t3gfCaPoY8J/LudrlsdFMlUA5j+zEkl1yo3wjgKX7F+7Q0XUNqqon73jaSkZOURVrxwz8c5ACuy1nV8oep+Y9qY078ZTpRPqmI4gnVpQ9ySZSFTt4LFXCc0O0Fhe5Nwx355vl/AUkQY9CtcPYh0hRvlJ+PbYD9dzkccsIoQ11bdOHcDhgmfCdoZamrFhvjwXKbyO8aKzvPQksTxV6PDUFYKirhLhTceItNoKwAP+zlulFNT/oE7yAnidsV7FefVca0p7fnuNtNmcH6HINnZq2/fdzGTagvhzzVAQBQ02nIgz/0hZM3Z29FGDmW5XVYO9Mjedlbab8pUDJ2ErKvQ6RIpkiGDG8u06va6AMiz9n6wYfnCWemsD8MW2CMRAvB0DUbFYvjfo2g0UiZZGMQSvDIZWA7BKAKUxzB053RAbCkwLzM/cC+X+3QvbhUG2UCXNx2rfbBGWaZNsPKiX9ggqyy0ZJgvOK74fpJQGXOkh8CYlXqrAukr3zct7fYslSBRGyjxuKVKXovmbRSC7xqscypoQMOcswX7eOJ1eDxYLkmscPan+o/bicd+5FHfTsWYEj7/JGcgS1qXnP3FxLIhWWAviBmZu2fpV3q7AZ8="
