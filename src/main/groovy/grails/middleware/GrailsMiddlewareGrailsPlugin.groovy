@@ -35,7 +35,7 @@ The Grails middleware plugin provides a convenient DSL to create an HTTP Request
     def issueManagement = [url: "http://github.com/driverpt/grails-middleware/issues"]
     def scm = [url: "http://github.com/driverpt/grails-middleware"]
 
-    def version = "0.0.1"
+    def version = "0.0.2"
     def observe = ["interceptors"]
     def loadAfter = ["interceptors"]
     def dependsOn = [core: GrailsUtil.getGrailsVersion(), i18n: GrailsUtil.getGrailsVersion(), interceptors: GrailsUtil.getGrailsVersion()]
