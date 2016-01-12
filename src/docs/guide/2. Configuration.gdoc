@@ -1,0 +1,14 @@
+By default the no Middleware ServletFilter will not be created unless at least 1 Middleware is defined/configured.
+
+To define the Middleware Pipeline, all you need to do is use the application.yml configuration and define the classes and the order
+
+Example:
+
+{code}
+grails:
+    middleware:
+        order:
+            - com.myapp.AuthenticationMiddleware
+            - com.myapp.AuthorizationMiddleware
+            - com.myapp.subpackage.SomeRandomMiddleware
+{code}

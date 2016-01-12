@@ -1,0 +1,36 @@
+The Grails middleware plugin provides a convenient DSL to create an HTTP Request/Response Pipeline.
+
+All you have to do is create a Middleware class
+
+{code}
+grails create-middleware com.myapp.MyMiddleware
+{code}
+
+Implement it's behaviour
+
+{code}
+package com.myapp
+
+class MyMiddleware {
+   void processRequest(GrailsWebRequest grailsWebRequest) {
+       grailsWebRequest.request.setAttribute("SomeAttribute", "1234")
+   }
+
+   void processResponse(GrailsWebRequest grailsWebRequest) {
+       grailsWebRequest.response.setHeader("X-SomeHeader", "Middleware Example")
+   }
+
+   void processException(GrailsWebRequest grailsWebRequest, Throwable exception) {
+       grailsWebRequest.response.setHeader("X-SomeException", exception.class.simpleName)
+   }
+}
+{code}
+
+And register it in the Config file
+
+{code}
+grails:
+    middleware:
+        order:
+            - com.myapp.MyMiddleware
+{code}
