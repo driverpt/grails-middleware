@@ -6,12 +6,9 @@ rm -rf build
 
 ./gradlew -q clean check install --stacktrace
 
-integration-test-app/run_integration_tests.sh
-
-functional-test-app/run_functional_tests.sh
+integration-test-app/run-integration-tests.sh
 
 if [[ -n $TRAVIS_TAG && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
-
 	./gradlew bintrayUpload --stacktrace
 
 	./gradlew docs --stacktrace
@@ -26,6 +23,6 @@ if [[ -n $TRAVIS_TAG && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'f
 	mv build/docs/manual/* .
 
 	git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
-	
-	git push origin	
+
+	git push origin
 fi

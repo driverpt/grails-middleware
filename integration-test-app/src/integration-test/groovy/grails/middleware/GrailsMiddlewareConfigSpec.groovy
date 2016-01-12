@@ -11,12 +11,8 @@ import spock.lang.Specification
 class GrailsMiddlewareConfigSpec extends Specification {
 
     def GrailsApplication grailsApplication
-    def GrailsPluginManager grailsPluginManager
 
     def setup() {
-        grailsApplication.config.grails.middleware = [order: [TestMiddleware1.name, TestMiddleware2.name]]
-        grailsApplication.rebuild()
-
     }
 
     def cleanup() {
