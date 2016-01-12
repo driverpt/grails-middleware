@@ -1,0 +1,18 @@
+package ${packageName}
+
+import org.grails.web.servlet.mvc.GrailsWebRequest
+
+class ${className} {
+
+   void processRequest(GrailsWebRequest grailsWebRequest) {
+       // TODO: Implement Request phase code
+   }
+
+   void processResponse(GrailsWebRequest grailsWebRequest) {
+       // TODO: Implement Response phase code
+   }
+
+   void processException(GrailsWebRequest grailsWebRequest, Throwable exception) {
+       // TODO: This method will be called if there is an Exception
+   }
+}
