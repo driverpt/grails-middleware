@@ -12,7 +12,7 @@ import org.springframework.core.Ordered
 class GrailsMiddlewareGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
-    def grailsVersion = "3.0.11 > *"
+    def grailsVersion = "3.0.0 > *"
     // resources that are excluded from plugin packaging
     def pluginExcludes = [
             "grails-app/views/error.gsp"
@@ -23,7 +23,7 @@ class GrailsMiddlewareGrailsPlugin extends Plugin {
     def author = "Your name"
     def authorEmail = ""
     def description = '''\
-Brief summary/description of the plugin.
+The Grails middleware plugin provides a convenient DSL to create an HTTP Request/Response Pipeline.
 '''
     def profiles = ['web']
 
@@ -81,7 +81,6 @@ Brief summary/description of the plugin.
     }
 
     void doWithDynamicMethods() {
-        // TODO Implement registering dynamic methods to classes (optional)
     }
 
     void doWithApplicationContext() {
