@@ -118,6 +118,10 @@ environments:
                 defaultTransactionIsolation: 2 # TRANSACTION_READ_COMMITTED
 ---
 grails:
+    doc:
+        authors: Luís Duarte
+---
+grails:
     middleware:
         order:
             - grails.middleware.TestMiddleware1
