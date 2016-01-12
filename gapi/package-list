@@ -1,0 +1,4 @@
+grails.artefact.middleware
+grails.compiler.traits
+grails.middleware
+org.grails.plugins.web.middleware
