@@ -8,6 +8,12 @@ rm -rf build
 
 integration-test-app/run-integration-tests.sh
 
+if [[ $TRAVIS_DEBUG == 'true' ]]; then
+    echo "TRAVIS_TAG: $TRAVIS_TAG"
+    echo "TRAVIS_BRANCH: $TRAVIS_BRANCH"
+    echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
+fi
+
 if [[ -n $TRAVIS_TAG && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
 	./gradlew bintrayUpload --stacktrace
 
