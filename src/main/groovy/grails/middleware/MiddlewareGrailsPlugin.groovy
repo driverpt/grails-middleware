@@ -8,8 +8,10 @@ import org.grails.plugins.web.middleware.MiddlewareArtefactHandler
 import org.springframework.boot.context.embedded.FilterRegistrationBean
 import org.springframework.context.ApplicationContext
 import org.springframework.core.Ordered
+import groovy.util.logging.Slf4j
 
-class GrailsMiddlewareGrailsPlugin extends Plugin {
+@Slf4j
+class MiddlewareGrailsPlugin extends Plugin {
 
     // the version or versions of Grails the plugin is designed for
     def grailsVersion = "3.0.0 > *"
@@ -35,7 +37,7 @@ The Grails middleware plugin provides a convenient DSL to create an HTTP Request
     def issueManagement = [url: "http://github.com/driverpt/grails-middleware/issues"]
     def scm = [url: "http://github.com/driverpt/grails-middleware"]
 
-    def version = "0.0.2"
+    def version = "0.0.3"
     def observe = ["interceptors"]
     def loadAfter = ["interceptors"]
     def dependsOn = [core: GrailsUtil.getGrailsVersion(), i18n: GrailsUtil.getGrailsVersion(), interceptors: GrailsUtil.getGrailsVersion()]
@@ -49,7 +51,7 @@ The Grails middleware plugin provides a convenient DSL to create an HTTP Request
 
     Closure doWithSpring() {
         { ->
-            log.trace "Injecting"
+            log.trace "Configuring Grails Middleware Plugin"
 
             GrailsClass[] middlewareChain = grailsApplication.getArtefacts(MiddlewareArtefactHandler.TYPE)
 
@@ -58,14 +60,6 @@ The Grails middleware plugin provides a convenient DSL to create an HTTP Request
                     bean.autowire = 'byName'
                 }
             }
-
-            def order = grailsApplication.config.grails.middleware?.order
-
-            if (order.isEmpty() || order == null) {
-                return
-            }
-
-            log.trace "Instanciating Middleware Classes: $order"
 
             def chain = getBeanClasses()
 
@@ -120,6 +114,9 @@ The Grails middleware plugin provides a convenient DSL to create an HTTP Request
 
     void onConfigChange(Map<String, Object> event) {
         log.trace "onConfigChange called"
+        def chain = getBeanClasses()
+
+        currentGrailsMiddlewareFilter.setMiddlewares(chain)
     }
 
     void onShutdown(Map<String, Object> event) {
@@ -131,7 +128,7 @@ The Grails middleware plugin provides a convenient DSL to create an HTTP Request
 
         def result = []
 
-        if(order.size > 0 || order != null) {
+        if(!order.isEmpty() || order != null) {
             for (String orderElement in order) {
                 def middlewareClass = this.class.classLoader.loadClass(orderElement)
                 if (!Middleware.isAssignableFrom(middlewareClass)) {
