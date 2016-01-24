@@ -16,7 +16,7 @@ plugins {
     id "com.jfrog.bintray" version "1.2"
 }
 
-version "0.0.2"
+version "0.0.3"
 group "org.grails.plugins"
 
 apply plugin: 'maven-publish'
@@ -75,8 +75,8 @@ bintray {
     pkg {
         userOrg = '' // If you want to publish to an organization
         name = "$project.name"
-        issueTrackerUrl = "https://github.com/driverpt/$project.name/issues"
-        vcsUrl = "https://github.com/driverpt/$project.name"
+        issueTrackerUrl = "https://github.com/driverpt/grails-$project.name/issues"
+        vcsUrl = "https://github.com/driverpt/grails-$project.name"
         version {
             attributes = ['grails-plugin': "$project.group:$project.name"]
             name = project.version
