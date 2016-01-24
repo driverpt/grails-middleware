@@ -10,12 +10,6 @@ jdk:
   - oraclejdk8
 install: /bin/true
 script: "./travis-build.sh"
-deploy:
-  on:
-    repo: driverpt/grails-middleware
-    tags: true
-    all_branches: true
-
 env:
   global:
   - GIT_NAME="Luis Duarte"
