@@ -14,7 +14,7 @@ if [[ $TRAVIS_DEBUG == 'true' ]]; then
     echo "TRAVIS_PULL_REQUEST: $TRAVIS_PULL_REQUEST"
 fi
 
-if [[ -n $TRAVIS_TAG && $TRAVIS_BRANCH == 'master' && $TRAVIS_PULL_REQUEST == 'false' ]]; then
+if [[ $TRAVIS_TAG =~ ^v[[:digit:]] && $TRAVIS_BRANCH =~ ^v[[:digit:]] && $TRAVIS_PULL_REQUEST == 'false' ]]; then
 	./gradlew bintrayUpload --stacktrace
 
 	./gradlew docs --stacktrace
