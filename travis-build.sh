@@ -15,7 +15,11 @@ if [[ $TRAVIS_DEBUG == 'true' ]]; then
 fi
 
 if [[ $TRAVIS_TAG =~ ^v[[:digit:]] && $TRAVIS_BRANCH =~ ^v[[:digit:]] && $TRAVIS_PULL_REQUEST == 'false' ]]; then
-	./gradlew bintrayUpload --stacktrace
+  if [[ -z $SKIP_BINTRAY || $SKIP_BINTRAY == 'false' ]]; then
+	  ./gradlew bintrayUpload --stacktrace
+  else
+    echo "Skipping Bintray deployment: SKIP_BINTRAY is true"
+  fi
 
 	./gradlew docs --stacktrace
 
