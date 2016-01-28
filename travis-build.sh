@@ -37,6 +37,7 @@ if [[ $TRAVIS_TAG =~ ^v[[:digit:]] && $TRAVIS_BRANCH =~ ^v[[:digit:]] && $TRAVIS
   rm -rf latest
   ln -s $version latest
   mv ../build/docs/manual/* $version/
+  git add $version
 
   git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
 
