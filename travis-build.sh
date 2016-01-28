@@ -28,11 +28,17 @@ if [[ $TRAVIS_TAG =~ ^v[[:digit:]] && $TRAVIS_BRANCH =~ ^v[[:digit:]] && $TRAVIS
 	git config --global credential.helper "store --file=~/.git-credentials"
 	echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
 
-	git checkout gh-pages
+  version = ${TRAVIS_TAG:1}
 
-	mv build/docs/manual/* .
+  git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/driverpt/grails-middleware.git gh-pages > /dev/null
 
-	git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+  cd gh-pages
+  mkdir -p $version
+  rm -rf latest
+  ln -s $version latest
+  mv ../build/docs/manual/* $version/
 
-	git push origin
+  git commit -a -m "Updating docs for Travis build: https://travis-ci.org/$TRAVIS_REPO_SLUG/builds/$TRAVIS_BUILD_ID"
+
+	git push -q origin > /dev/null
 fi
