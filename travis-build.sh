@@ -28,7 +28,7 @@ if [[ $TRAVIS_TAG =~ ^v[[:digit:]] && $TRAVIS_BRANCH =~ ^v[[:digit:]] && $TRAVIS
 	git config --global credential.helper "store --file=~/.git-credentials"
 	echo "https://$GH_TOKEN:@github.com" > ~/.git-credentials
 
-  version = ${TRAVIS_TAG:1}
+  version=${TRAVIS_TAG:1}
 
   git clone --quiet --branch=gh-pages https://${GH_TOKEN}@github.com/driverpt/grails-middleware.git gh-pages > /dev/null
 
