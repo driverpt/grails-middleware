@@ -3,4 +3,4 @@
 Grails Middleware Plugin
 ==================================
 
-See [documentation](https://driverpt.github.io/grails-middleware/) for further information.
+See [documentation](https://driverpt.github.io/grails-middleware/latest) for further information.
